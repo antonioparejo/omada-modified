@@ -198,11 +198,16 @@ EOF
     systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
     msg_ok "Customized Container"
   fi
+
+  #LINE FOR MOFICATION (ONLY WORKS WITH OMADA)
+  echo "bash -c \"\$(wget -qLO - https://raw.githubusercontent.com/antonioparejo/omada-modified/refs/heads/main/omada.sh)\"" >/usr/bin/update
+  #MODIFICATION BLOCK DOWN. CHECK IF OMADA IS THE APP BEING INSTALLED. OTHERWISE, PROCEED AS NORMALLY.
+  #if [ ${app} = "omada" ]; then
+  #  echo "bash -c \"\$(wget -qLO - https://raw.githubusercontent.com/antonioparejo/omada-modified/refs/heads/main/omada.sh)\"" >/usr/bin/update
+  #else
+  #  echo "bash -c \"\$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/${app}.sh)\"" >/usr/bin/update
+  #fi
+  #MODIFICATION BLOCK UPPER
   
-  if [ ${app} = "omada" ]; then
-    echo "bash -c \"\$(wget -qLO - https://raw.githubusercontent.com/antonioparejo/omada-modified/refs/heads/main/omada.sh)\"" >/usr/bin/update
-  else
-    echo "bash -c \"\$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/${app}.sh)\"" >/usr/bin/update
-  fi
   chmod +x /usr/bin/update
 }
