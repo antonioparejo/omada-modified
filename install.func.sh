@@ -200,7 +200,7 @@ EOF
   fi
   
   if [ ${app} = "omada" ]; then
-    echo "bash -c \"\$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/${app}.sh)\"" >/usr/bin/update
+    echo "bash -c \"\$(wget -qLO - https://raw.githubusercontent.com/antonioparejo/omada-modified/refs/heads/main/omada.sh)\"" >/usr/bin/update
   else
     echo "bash -c \"\$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/ct/${app}.sh)\"" >/usr/bin/update
   fi
